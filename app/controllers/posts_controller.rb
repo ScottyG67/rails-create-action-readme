@@ -8,8 +8,21 @@ class PostsController < ApplicationController
   end
 
   def new
+    #byebug
     @post = Post.new
   end
 
   # add create method here
+  def create
+    
+    @post= Post.new
+    @post.title = params[:title]
+    @post.description = params[:description]
+
+    if @post
+      @post.save
+      redirect_to @post
+    end
+
+  end
 end
